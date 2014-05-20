@@ -6,6 +6,9 @@ SEF Library for OpenCart. Automatic prepare, filter, transliteration &amp; save 
 Release by OpenCart Ukrainian Community (http://opencart-ukraine.tumblr.com)
 Eugene Lifescale (a.k.a. Shaman)
 
+Installation:
+https://github.com/shaman/opencart-sef-library/wiki/Installation
+
 Ask the question:
 https://github.com/shaman/opencart-sef-library/issues
 
@@ -35,7 +38,7 @@ Find:
 $db = new DB(DB_DRIVER, DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 $registry->set('db', $db);
 
-Add after
+Add after:
 // SEF
 $sef = new Sef($registry);
 $registry->set('sef', $sef);
