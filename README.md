@@ -16,3 +16,6 @@ https://github.com/shaman/opencart-sef-library/issues
 
 Community support:
 http://opencart-ukraine.tumblr.com/submit
+
+Ukrainian Guide Page:
+http://opencart-ukraine.tumblr.com/post/86334105921/opencart-sef-library
