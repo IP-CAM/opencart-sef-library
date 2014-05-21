@@ -2,6 +2,7 @@ opencart-sef-library
 ====================
 
 Automatic prepare, filter, transliteration &amp; save incoming RAW string into the DB as OpenCart URL (SEF)
+Supports automatic 301 redirect from old SEO URL for SEO PRO module (https://github.com/rb2/opencart-seopro)
 
 Released by OpenCart Ukrainian Community (http://opencart-ukraine.tumblr.com)
 Eugene Lifescale (a.k.a. Shaman)
