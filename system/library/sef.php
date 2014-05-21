@@ -28,7 +28,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html     GNU General Public License, Version 3
  */
 
-class Sef {
+final class Sef {
 
     // Basic variables
     private $_db;
@@ -38,8 +38,20 @@ class Sef {
     private $_transliteration = true;
     private $_transliteration_language = 'UA';
 
+
     public function __construct($registry) {
         $this->_db = $registry->get('db');
+
+
+        // Create DB Redirect Table, if not exists
+        $this->_db->query("CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "url_redirect` ( ".
+                              "`url_redirect_id` int(11) NOT NULL AUTO_INCREMENT, ".
+                              "`keyword` varchar(255) NOT NULL, ".
+                              "`query` varchar(255) NOT NULL, ".
+                              "PRIMARY KEY (`url_redirect_id`), ".
+                              "UNIQUE KEY `query` (`keyword`) ".
+                            ") ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;");
+
     }
 
     /*
@@ -55,7 +67,7 @@ class Sef {
     public function save($keyword, $query, $title = '') {
 
         // Get current alias
-        // $old_url_alias = $this->_db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE query = '" . $this->_db->escape($query) . "' LIMIT 1");
+        $old_url_alias = $this->_db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE query = '" . $this->_db->escape($query) . "' LIMIT 1");
 
 
         // Filter
@@ -97,9 +109,10 @@ class Sef {
 
 
         // Add redirect 301
-        //if ($old_url_alias->num_rows && $old_url_alias->row['keyword'] != $keyword) {
-            // todo: add redirect 301 if $old_url_alias->keyword != $new_keyword
-        //}
+        if ($old_url_alias->num_rows && $old_url_alias->row['keyword'] != $new_keyword) {
+            $this->_db->query("DELETE FROM " . DB_PREFIX . "url_redirect WHERE query = '" . $this->_db->escape($query) . "'");
+            $this->_db->query("INSERT INTO " . DB_PREFIX . "url_redirect SET keyword = '" . $this->_db->escape($old_url_alias->row['keyword']) . "', query = '" . $this->_db->escape($query) . "'");
+        }
     }
 
 
