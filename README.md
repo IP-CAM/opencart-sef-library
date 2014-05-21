@@ -1,7 +1,8 @@
 opencart-sef-library
 ====================
 
-SEF Library for OpenCart. Automatic prepare, filter, transliteration &amp; save incoming RAW string into the DB as OpenCart URL (SEF)
+SEF Library for OpenCart. 
+Automatic prepare, filter, transliteration &amp; save incoming RAW string into the DB as OpenCart URL (SEF)
 
 Released by OpenCart Ukrainian Community (http://opencart-ukraine.tumblr.com)
 Eugene Lifescale (a.k.a. Shaman)
